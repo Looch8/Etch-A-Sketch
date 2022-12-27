@@ -3,6 +3,8 @@
 // DOM elements
 const board = document.querySelector(`.board`);
 const buttons = document.querySelectorAll(`.buttons`);
+const setSize = document.querySelector(`.set-size`);
+const white = document.querySelector(`.white`);
 
 // Populate board function here
 
@@ -17,6 +19,9 @@ function populateBoard(size) {
   for (let i = 0; i < amount; i++) {
     let square = document.createElement(`div`);
     // hover effect
+    // square.addEventListener(`mouseover`, function () {
+    //   square.setAttribute(`style`, `background-color: black`);
+    // });
     square.addEventListener(`mouseover`, function () {
       square.setAttribute(`style`, `background-color: black`);
     });
@@ -24,4 +29,15 @@ function populateBoard(size) {
     board.insertAdjacentElement(`beforeend`, square);
   }
 }
-populateBoard(45);
+populateBoard(20);
+
+// Populate board limit
+function changeSize(input) {
+  if (input >= 2 && input <= 100) {
+    populateBoard(input);
+  } else {
+    alert(`Please enter a value between 2 and 100`);
+  }
+}
+
+// onclick white button
