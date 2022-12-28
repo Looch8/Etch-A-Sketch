@@ -6,6 +6,8 @@ const buttons = document.querySelectorAll(`.buttons`);
 const setSize = document.querySelector(`.set-size`);
 const eraser = document.querySelector(`.eraser`);
 const reset = document.querySelector(`.reset`);
+const black = document.querySelector(`.black`);
+const random = document.querySelector(`.random`);
 
 let color = `black`;
 
@@ -23,7 +25,7 @@ function populateBoard(size) {
     let square = document.createElement(`div`);
 
     square.addEventListener(`mouseover`, colorSquare);
-    square.style.backgroundColor = `blue`;
+    square.style.backgroundColor = `white`;
     board.insertAdjacentElement(`beforeend`, square);
   }
 }
@@ -40,7 +42,11 @@ function changeSize(input) {
 
 //Color function
 function colorSquare() {
-  this.style.backgroundColor = color;
+  if (color === `random`) {
+    this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+  } else {
+    this.style.backgroundColor = color;
+  }
 }
 
 // Change color of mousehover
@@ -51,6 +57,16 @@ function changeColor(choice) {
 // White button
 eraser.addEventListener(`click`, function () {
   changeColor(`white`);
+});
+
+// Black button
+black.addEventListener(`click`, function () {
+  changeColor(`black`);
+});
+
+// Rainbow button
+random.addEventListener(`click`, function () {
+  changeColor(`random`);
 });
 
 // Reset board
