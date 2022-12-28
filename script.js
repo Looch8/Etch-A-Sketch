@@ -4,7 +4,8 @@
 const board = document.querySelector(`.board`);
 const buttons = document.querySelectorAll(`.buttons`);
 const setSize = document.querySelector(`.set-size`);
-const white = document.querySelector(`.white`);
+const eraser = document.querySelector(`.eraser`);
+const reset = document.querySelector(`.reset`);
 
 // Populate board function here
 
@@ -18,10 +19,10 @@ function populateBoard(size) {
   let amount = size * size;
   for (let i = 0; i < amount; i++) {
     let square = document.createElement(`div`);
-    // hover effect
-    // square.addEventListener(`mouseover`, function () {
-    //   square.setAttribute(`style`, `background-color: black`);
-    // });
+
+    square.addEventListener(`mouseover`, function () {
+      square.setAttribute(`style`, `background-color: black`);
+    });
     square.addEventListener(`mouseover`, function () {
       square.setAttribute(`style`, `background-color: black`);
     });
@@ -41,3 +42,14 @@ function changeSize(input) {
 }
 
 // onclick white button
+function eraseButton() {
+  white.addEventListener();
+}
+
+// reset button
+function resetBoard() {
+  reset.addEventListener(`click`, function () {
+    populateBoard(20);
+  });
+}
+resetBoard();
