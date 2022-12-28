@@ -7,6 +7,8 @@ const setSize = document.querySelector(`.set-size`);
 const eraser = document.querySelector(`.eraser`);
 const reset = document.querySelector(`.reset`);
 
+let color = `black`;
+
 // Populate board function here
 
 // create 16x16 grid - put this into a function
@@ -20,13 +22,8 @@ function populateBoard(size) {
   for (let i = 0; i < amount; i++) {
     let square = document.createElement(`div`);
 
-    square.addEventListener(`mouseover`, function () {
-      square.setAttribute(`style`, `background-color: black`);
-    });
-    square.addEventListener(`mouseover`, function () {
-      square.setAttribute(`style`, `background-color: black`);
-    });
-    square.style.background = `blue`;
+    square.addEventListener(`mouseover`, colorSquare);
+    square.style.backgroundColor = `blue`;
     board.insertAdjacentElement(`beforeend`, square);
   }
 }
@@ -41,15 +38,26 @@ function changeSize(input) {
   }
 }
 
-// onclick white button
-function eraseButton() {
-  white.addEventListener();
+//Color function
+function colorSquare() {
+  this.style.backgroundColor = color;
 }
 
-// reset button
+// Change color of mousehover
+function changeColor(choice) {
+  color = choice;
+}
+
+// White button
+eraser.addEventListener(`click`, function () {
+  changeColor(`white`);
+});
+
+// Reset board
 function resetBoard() {
   reset.addEventListener(`click`, function () {
     populateBoard(20);
+    changeColor(`black`);
   });
 }
 resetBoard();
